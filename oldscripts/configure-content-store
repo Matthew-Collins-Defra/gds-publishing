@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker run --name content-store --link mongo -d --env-file ./envfile content-store

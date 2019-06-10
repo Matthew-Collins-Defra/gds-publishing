@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker run --name mongo -v mongo-data:/data/db -d mongo

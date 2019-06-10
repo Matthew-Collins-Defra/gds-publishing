@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker run --name frontend --link content-store --link static:static.dev.gov.uk -d -p 8080:3005 --env-file ./envfile frontend

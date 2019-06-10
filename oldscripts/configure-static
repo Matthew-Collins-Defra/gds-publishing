@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker run --name static --link redis -d  -p 3013:3013 --env-file ./envfile static
