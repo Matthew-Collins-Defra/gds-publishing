@@ -2,4 +2,4 @@
 
 Collection of scripts and docker files for running the gds publishing platform locally without virtualbox
 
-The GDS repos should be cloned into the ../publishing directory for these scripts to work
+For these scripts to work, the GDS repositories should be cloned into `../publishing/` (i.e. into a sibling of this repository). Use `clone-repos.sh` to do this automatically.
