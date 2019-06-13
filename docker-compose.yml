@@ -19,19 +19,11 @@ services:
   publisher:
     image: publisher
     env_file: ./publisher/govuk-envfile
-    external_links:
-      - shared_postgres_1
-      - shared_rabbitmq_1
-      - shared_content-store_1
     networks:
       - govuk
   publishing-api:
     image: publishing-api
     env_file: ./publisher/govuk-envfile
-    external_links:
-      - shared_postgres_1
-      - shared_rabbitmq_1
-      - shared_content-store_1
     networks:
       - govuk
   static:
