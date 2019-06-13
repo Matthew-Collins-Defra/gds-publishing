@@ -1,3 +1,0 @@
-RABBITMQ_HOSTS=rabbitmq
-RABBITMQ_DEFAULT_USER=publishing_api
-RABBITMQ_DEFAULT_PASS=publishing_api

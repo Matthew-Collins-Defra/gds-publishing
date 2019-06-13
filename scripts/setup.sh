@@ -1,8 +1,8 @@
 #! /usr/bin/env sh
 
 (
-    mkdir -p ../publishing
-    cd ../publishing
+    mkdir -p ./gds-services
+    cd ./gds-services
 
     #git clone https://github.com/alphagov/govuk-puppet.git
     #git clone https://github.com/alphagov/govuk-aws-data.git
@@ -59,3 +59,5 @@
     git clone https://github.com/alphagov/travel-advice-publisher.git
     git clone https://github.com/alphagov/whitehall.git
 )
+
+docker-compose build

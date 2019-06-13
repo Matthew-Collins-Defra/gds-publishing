@@ -1,44 +1,42 @@
 version: '3'
 services:
-  nginx:
-    build: ./publisher
-    networks:
-      - govuk
-    ports:
-      - 80:80
   calculators:
-    image: calculators
-    env_file: ./publisher/govuk-envfile
+    build: gds-services/calculators
+    env_file: ./services/govuk-env
     networks:
       - govuk
   calendars:
-    image: calendars
-    env_file: ./publisher/govuk-envfile
+    build: gds-services/calendars
+    env_file: ./services/govuk-env
+    networks:
+      - govuk
+  content-store:
+    build: gds-services/content-store
+    hostname: content-store
+    networks:
+      - govuk
+  content-tagger:
+    build: gds-services/content-tagger
     networks:
       - govuk
   publisher:
-    image: publisher
-    env_file: ./publisher/govuk-envfile
+    build: gds-services/publisher
+    env_file: ./services/govuk-env
     networks:
       - govuk
   publishing-api:
-    image: publishing-api
-    env_file: ./publisher/govuk-envfile
+    build: gds-services/publishing-api
+    env_file: ./services/govuk-env
     networks:
       - govuk
   static:
-    image: static
-    env_file: ./publisher/govuk-envfile
+    build: gds-services/static
+    env_file: ./services/govuk-env
+    networks:
+      - govuk
     ports:
       - 3013:3013
-    networks:
-      - govuk
 
-  redis:
-    image: redis
-    hostname: redis
-    networks:
-      - govuk
   mongo:
     image: mongo
     hostname: mongo
@@ -46,25 +44,39 @@ services:
       - "mongo-data:/data/db"
     networks:
       - govuk
-  rabbitmq:
-    image: rabbitmq
-    env_file: ./shared/rabbitmq-envfile
-    hostname: rabbitmq-shared
+  nginx:
+    image: nginx:alpine
     volumes:
-      - "rabbitmq-data:/var/lib/rabbitmq"
+      - "./services/nginx/conf:/etc/nginx/conf.d/"
     networks:
       - govuk
+    ports:
+      - 80:80
   postgres:
     image: postgres
-    env_file: ./shared/postgres-envfile
+    environment:
+      POSTGRES_PASSWORD:
+      POSTGRES_USER:
+      POSTGRES_DB:
     hostname: postgres
     volumes:
       - "postgres-data:/var/lib/postgresql/data"
     networks:
       - govuk
-  content-store:
-    image: content-store
-    hostname: content-store
+  rabbitmq:
+    image: rabbitmq
+    environment:
+      RABBITMQ_HOSTS: rabbitmq
+      RABBITMQ_DEFAULT_USER: publishing_api
+      RABBITMQ_DEFAULT_PASS: publishing_api
+    hostname: rabbitmq
+    volumes:
+      - "rabbitmq-data:/var/lib/rabbitmq"
+    networks:
+      - govuk
+  redis:
+    image: redis
+    hostname: redis
     networks:
       - govuk
   content-tagger:
