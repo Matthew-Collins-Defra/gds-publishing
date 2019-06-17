@@ -23,6 +23,11 @@ services:
       - govuk
     ports:
       - 3116:3116
+  frontend:
+    build: gds-services/frontend
+    env_file: ./services/govuk-env
+    networks:
+      - govuk
   publisher:
     build: gds-services/publisher
     env_file: ./services/govuk-env
