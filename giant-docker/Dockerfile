@@ -39,5 +39,7 @@ COPY --chown=govuk:govuk setupimage-6.sh /home/govuk/
 RUN /bin/bash -c /home/govuk/setupimage-6.sh
 
 COPY --chown=govuk:govuk setupimage-7.sh /home/govuk/
+COPY --chown=govuk:govuk guix-install.sh /home/govuk/
+RUN /bin/bash -c /home/govuk/setupimage-7.sh
 
 #USER govuk

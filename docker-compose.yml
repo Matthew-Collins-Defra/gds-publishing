@@ -19,24 +19,18 @@ services:
   publisher:
     image: publisher
     env_file: ./publisher/govuk-envfile
-    external_links:
-      - shared_postgres_1
-      - shared_rabbitmq_1
-      - shared_content-store_1
     networks:
       - govuk
   publishing-api:
     image: publishing-api
     env_file: ./publisher/govuk-envfile
-    external_links:
-      - shared_postgres_1
-      - shared_rabbitmq_1
-      - shared_content-store_1
     networks:
       - govuk
   static:
     image: static
     env_file: ./publisher/govuk-envfile
+    ports:
+      - 3013:3013
     networks:
       - govuk
 
@@ -71,6 +65,14 @@ services:
   content-store:
     image: content-store
     hostname: content-store
+    networks:
+      - govuk
+  content-tagger:
+    image: content-tagger
+    env_file: ./publisher/govuk-envfile
+    hostname: content-tagger
+    ports:
+      - 3116:3116
     networks:
       - govuk
 

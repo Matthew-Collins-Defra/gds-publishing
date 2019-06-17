@@ -4,6 +4,7 @@ PLEK_SERVICE_CALENDARS_URI=http://calendars:3011/
 PLEK_SERVICE_CONTENT_STORE_URI=http://content-store:3068/
 PLEK_SERVICE_PUBLISHING_API_URI=http://publishing-api:3093/
 PLEK_SERVICE_CALCULATORS_URL=http://calculators:3047/
+PLEK_SERVICE_CONTENT_TAGGER_URI=http://content-tagger:3116/
 GOVUK_ASSET_ROOT=http://localhost/
 RABBITMQ_HOSTS=rabbitmq
 GOVUK_CONTENT_SCHEMAS_PATH=/govuk-content-schemas
