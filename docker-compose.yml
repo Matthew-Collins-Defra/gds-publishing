@@ -17,8 +17,12 @@ services:
       - govuk
   content-tagger:
     build: gds-services/content-tagger
+    env_file: ./services/govuk-env
+    hostname: content-tagger
     networks:
       - govuk
+    ports:
+      - 3116:3116
   publisher:
     build: gds-services/publisher
     env_file: ./services/govuk-env
@@ -77,14 +81,6 @@ services:
   redis:
     image: redis
     hostname: redis
-    networks:
-      - govuk
-  content-tagger:
-    image: content-tagger
-    env_file: ./publisher/govuk-envfile
-    hostname: content-tagger
-    ports:
-      - 3116:3116
     networks:
       - govuk
 
