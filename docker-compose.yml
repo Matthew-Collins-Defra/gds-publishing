@@ -36,7 +36,9 @@ services:
     networks:
       - govuk
   content-publisher:
-    build: gds-services/content-publisher
+    build:
+      context: gds-services/content-publisher
+      dockerfile: ../../services/content-publisher/Dockerfile
     env_file: ./services/govuk-env
     networks:
       - govuk
