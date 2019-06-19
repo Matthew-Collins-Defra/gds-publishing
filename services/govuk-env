@@ -7,5 +7,6 @@ PLEK_SERVICE_CALCULATORS_URL=http://calculators:3047/
 PLEK_SERVICE_CONTENT_TAGGER_URI=http://content-tagger:3116/
 GOVUK_ASSET_ROOT=http://localhost/
 RABBITMQ_HOSTS=rabbitmq
+DATABASE_URL=postgresql://postgres@postgres
 GOVUK_CONTENT_SCHEMAS_PATH=/govuk-content-schemas
 GOVUK_WEBSITE_ROOT=http://www.gov.uk/
